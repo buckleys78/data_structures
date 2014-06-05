@@ -1,3 +1,5 @@
+require 'node'
+
 class Queue
   attr_accessor :first, :last, :size
 
@@ -36,11 +38,3 @@ private
   end
 end
 
-class Node
-  attr_accessor :value, :next_node
-
-  def initialize(value, next_node)
-    @value = value
-    @next_node = next_node
-  end
-end
