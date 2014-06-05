@@ -6,7 +6,8 @@ By [Steve Buckley](steve.buckley@gerrit-tech.com).
 ## Description
 **Classic Data Structures** A set of various data structures I wrote, in Ruby.
 
-> Linked Lists, with methods of insert_head, remove, size, search, and a method to_s to produce a CSV list of node values.
+> Linked Lists, with methods of insert_head, remove, size, search, and an override of the  method to_s in order to produce a CSV list of all node values.
 
 > Stack, with methods of push, pop, and size.
 
+> Queue, with methods of size, enqueue, dequeue, and peek.

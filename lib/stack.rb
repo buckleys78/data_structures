@@ -1,4 +1,3 @@
-
 class Stack
   attr_accessor :head, :size
 

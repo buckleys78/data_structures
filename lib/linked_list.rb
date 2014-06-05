@@ -1,4 +1,3 @@
-
 class LinkedList
   attr_accessor :head, :node_count
 
