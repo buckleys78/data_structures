@@ -13,3 +13,7 @@ By [Steve Buckley](steve.buckley@gerrit-tech.com).
 > Queue, with methods of size, enqueue, dequeue, and peek.
 
 > Binary Tree, as a demonstration concept, with methods to print pre-ordered, post-ordered, and in-ordered.
+
+> Insertion Sort
+
+> Merge Sort

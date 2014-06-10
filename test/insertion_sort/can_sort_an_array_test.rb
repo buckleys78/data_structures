@@ -37,9 +37,9 @@ describe InsertionSort, "Testing Insertion Sort" do
   end
 
   random_arry, lo_to_hi, hi_to_lo = [], [], []
+  f = 0
+  r = 30_000 - 1
   30_000.times do
-    r = 30_000 - 1
-    f = 0
     random_arry << rand(30_000)
     lo_to_hi << f
     f += 1
