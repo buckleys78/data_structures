@@ -36,19 +36,20 @@ describe InsertionSort, "Testing Insertion Sort" do
     sorted_arry[2].must_equal 5
   end
 
-  random_arry, lo_to_hi, hi_to_lo = [], [], []
-  f = 0
-  r = 30_000 - 1
-  30_000.times do
-    random_arry << rand(30_000)
-    lo_to_hi << f
-    f += 1
-    hi_to_lo << r
-    r -= 1
-  end
+  # random_arry, lo_to_hi, hi_to_lo = [], [], []
+  # # lo_to_hi = (0..30_000)
+  # f = 0
+  # r = 30_000 - 1
+  # 30_000.times do
+  #   random_arry << rand(30_000)
+  #   lo_to_hi << f
+  #   f += 1
+  #   hi_to_lo << r
+  #   r -= 1
+  # end
 
-  puts Benchmark.measure {InsertionSort.sort_it lo_to_hi}
-  puts Benchmark.measure {InsertionSort.sort_it hi_to_lo}
-  puts Benchmark.measure {InsertionSort.sort_it random_arry}
+  # puts Benchmark.measure {InsertionSort.sort_it lo_to_hi}
+  # puts Benchmark.measure {InsertionSort.sort_it hi_to_lo}
+  # puts Benchmark.measure {InsertionSort.sort_it random_arry}
 
 end
