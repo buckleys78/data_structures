@@ -1,24 +1,24 @@
 require 'test_helper'
-require 'merge_sort'
+require 'quick_sort'
 require "pry"
 require "pry-nav"
 require 'benchmark'
 require 'ruby-prof'
 
-describe MergeSort, "Testing Merge Sort" do
+describe QuickSort, "Testing Quick Sort" do
 
   before do
     @arry= []
   end
 
   it "returns an empty array if the array is empty" do
-    sorted_arry = MergeSort.sort_it(@arry)
+    sorted_arry = QuickSort.sort_it(@arry)
     sorted_arry.length.must_equal 0
   end
 
   it "returns the array if it has one element" do
     @arry << 5
-    sorted_arry = MergeSort.sort_it(@arry)
+    sorted_arry = QuickSort.sort_it(@arry)
     sorted_arry.length.must_equal 1
     sorted_arry[0].must_equal 5
   end
@@ -35,7 +35,7 @@ describe MergeSort, "Testing Merge Sort" do
     @arry << 1
     @arry << 4
     @arry << 6
-    sorted_arry = MergeSort.sort_it(@arry)
+    sorted_arry = QuickSort.sort_it(@arry)
     sorted_arry[0].must_equal 1
     sorted_arry[1].must_equal 2
     sorted_arry[2].must_equal 3

@@ -4,7 +4,11 @@ class MergeSort
 
     return a if a.length < 2
 
-    left,right = a.each_slice( (a.size/2.0).round ).to_a
+    # left,right = a.each_slice( (a.size/2.0).round ).to_a
+    l_size = a.length / 2
+    r_size = a.length - l_size
+    left = a.slice(0, l_size)
+    right = a.slice(l_size, r_size)
 
     left_sorted = sort_it(left)
     right_sorted = sort_it(right)
@@ -12,31 +16,16 @@ class MergeSort
     return self.merge_it left_sorted, right_sorted
   end
 
+private
   def self.merge_it (left, right)
-
-    left_ptr = 0
-    right_ptr = 0
-    new_ptr = 0
     merged_arry = []
-    while left_ptr < left.length && right_ptr < right.length do
-      if left[left_ptr] < right[right_ptr]
-        merged_arry[new_ptr] = left[left_ptr]
-        left_ptr += 1
+    while left.length > 0 && right.length > 0 do
+      if left[0] < right[0]
+        merged_arry << left.shift
       else
-        merged_arry[new_ptr] = right[right_ptr]
-        right_ptr += 1
+        merged_arry << right.shift
       end
-      new_ptr += 1
     end
-    until left_ptr == left.length do
-      merged_arry << left[left_ptr]
-      left_ptr += 1
-    end
-    until right_ptr == right.length do
-      merged_arry << right[right_ptr]
-      right_ptr += 1
-    end
-    return merged_arry
+    return merged_arry + left + right
   end
-
 end
