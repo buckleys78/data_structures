@@ -13,7 +13,7 @@ class QuickSort
 
 private
   def self.partition (left_index, right_index)
-    pivot_index = left_index + (right_index- left_index) / 2
+    pivot_index = left_index + (right_index - left_index) / 2
     pivot_value = @arry[pivot_index]
 
     #swap: put pivot to the right
@@ -22,7 +22,7 @@ private
 
     (left_index...right_index).each do |i|
       unless @arry[i] > pivot_value
-         @arry[store_index], @arry[i] = @arry[i], @arry[store_index]
+        @arry[store_index], @arry[i] = @arry[i], @arry[store_index]
         store_index += 1
       end
     end
