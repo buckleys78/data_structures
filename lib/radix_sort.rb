@@ -3,14 +3,14 @@ class RadixSort
   def self.sort_it(arry)
     return arry if arry.length < 2
     a = arry
-    passes = [a.min.abs, a.max.abs].max.to_s.length
-    passes.times do |i|
+    @passes = [a.min.abs, a.max.abs].max.to_s.length
+    @passes.times do |i|
       bkt =  Array.new(20) { Array.new() }
       a.each do |val|
         indx = get_index(val, i+1)
         bkt[indx] << val unless indx.nil?
       end
-      a = bkt.flatten.compact
+      a = bkt.flatten
     end
     return a
   end
@@ -34,6 +34,10 @@ private
     while quotient > 0 do
       quotient, modulus = quotient.divmod(10)
       digits.unshift(modulus)
+    end
+    #pad with leading zeroes
+    while digits.length < @passes
+      digits.unshift(0)
     end
     return digits
   end

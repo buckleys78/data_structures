@@ -62,7 +62,7 @@ describe RadixSort, "Testing Radix Sort" do
   puts "lo to hi: #{Benchmark.measure {RadixSort.sort_it lo_to_hi}}"
   puts "hi to lo: #{Benchmark.measure {RadixSort.sort_it hi_to_lo}}"
   puts "random:   #{Benchmark.measure {RadixSort.sort_it random_arry}}"
-  puts
+  # puts
   # result = RubyProf.stop
   # printer = RubyProf::FlatPrinter.new(result)
   # printer.print(STDOUT)
