@@ -1,9 +1,24 @@
 class RadixSort
 
+  # def self.sort_it(arry)
+  #   passes = [arry.min.abs, arry.max].max.to_s.length
+  #   passes.times do |i|
+  #     base = 10**i
+  #     arry.each do |n|
+  #       buckets[]
+  #       bucket_value = n / base
+  #       bucket_index = bucket_value % 10
+  #       bucket_index += 10 if n >= 0
+  #       buckets[bucket_index] << n
+  #     end
+  #   end
+  #   arry = buckets.flatten
+  # end
+
   def self.sort_it(arry)
     return arry if arry.length < 2
     a = arry
-    @passes = [a.min.abs, a.max.abs].max.to_s.length
+    @passes = [a.min.abs, a.max].max.to_s.length
     @passes.times do |i|
       bkt =  Array.new(20) { Array.new() }
       a.each do |val|
