@@ -41,15 +41,15 @@ class DoublyLinkedList
     dups_removed = 0
     return dups_removed if size < 2
     hash_table = Hash.new
-    node = @tail.prev_node
+    node = @head.next_node
     size.times {
-      if hash_table[node.value].nil?
-        hash_table[node.value] = 1
-      else
+      if hash_table[node.value]
         remove(node)
         dups_removed += 1
+      else
+        hash_table[node.value] = true
       end
-      node = node.prev_node
+      node = node.next_node
     }
     return dups_removed
   end
@@ -58,7 +58,7 @@ class DoublyLinkedList
     dups_removed = 0
     return dups_removed if size < 2
     node = @head.next_node
-    until node.next_node.nil?
+    until node == @tail
       test_node = node.next_node
       until test_node == @tail
         if test_node.value == node.value
