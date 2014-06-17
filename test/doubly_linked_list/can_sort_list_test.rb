@@ -30,21 +30,21 @@ describe DoublyLinkedList, "Testing Doubly Linked list" do
     @doubly_linked_list.add(4)
   end
 
-  # it "can quickly remove all duplicates from a list of 200 random numbers" do
-  #   200.times { @doubly_linked_list.add(rand(100)) }
-  #   # puts @doubly_linked_list.size
-  #   @doubly_linked_list.remove_duplicates_fast
-  #   # puts @doubly_linked_list.size
-  #   @doubly_linked_list.remove_duplicates_fast.must_equal 0
-  # end
+  it "can quickly remove all duplicates from a list of 200 random numbers" do
+    200.times { @doubly_linked_list.add(rand(100)) }
+    # puts @doubly_linked_list.size
+    @doubly_linked_list.remove_duplicates_fast
+    # puts @doubly_linked_list.size
+    @doubly_linked_list.remove_duplicates_fast.must_equal 0
+  end
 
-  # it "can thinly remove all duplicates from a list of 200 random numbers" do
-  #   200.times { @doubly_linked_list.add(rand(100)) }
-  #   # puts @doubly_linked_list.size
-  #   puts @doubly_linked_list.remove_duplicates_thin
-  #   # puts @doubly_linked_list.size
-  #   @doubly_linked_list.remove_duplicates_thin.must_equal 0
-  # end
+  it "can thinly remove all duplicates from a list of 200 random numbers" do
+    200.times { @doubly_linked_list.add(rand(100)) }
+    # puts @doubly_linked_list.size
+    @doubly_linked_list.remove_duplicates_thin
+    # puts @doubly_linked_list.size
+    @doubly_linked_list.remove_duplicates_thin.must_equal 0
+  end
 
   it "will only contain non-duplicates after calling remove_duplicates_fast" do
     @doubly_linked_list.add(5)
