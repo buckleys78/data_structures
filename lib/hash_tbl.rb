@@ -1,6 +1,6 @@
 class HashTbl
 
-  def initialize(size)
+  def initialize(size = 1024)
     @size = size
     @tbl =  Array.new(@size) { Array.new() }
   end
@@ -18,8 +18,6 @@ class HashTbl
 
 private
   def get_hash(key)
-    arry = []
-    key.each_byte{ |n| arry << n}
-    arry.reduce(:+) % @size
+    key.each_byte.reduce(:+) % @size
   end
 end
