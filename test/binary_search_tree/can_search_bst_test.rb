@@ -40,4 +40,8 @@ describe BinarySearchTree, "Testing Binary Search Tree" do
     @bst.balance.must_equal 3
   end
 
+  after do
+
+  end
+
 end

@@ -17,3 +17,8 @@ By [Steve Buckley](steve.buckley@gerrit-tech.com).
 > Insertion Sort
 
 > Merge Sort
+
+> Radix Sort
+
+> Binary Search Tree, with methods of insert, contains, size, depth, and degree-of-balance.  It does not rebalance the tree.
+
