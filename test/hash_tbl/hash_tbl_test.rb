@@ -43,4 +43,17 @@ describe HashTbl, "Testing Hash Table" do
     @ht.get('three').must_equal 'tree'
   end
 
+  it "can find a k,v pair from a bucket with many collisions" do
+    @ht.set('one', 1)
+    @ht.set('two', 2)     #collision
+    @ht.set('wto', 2.1)   #collision
+    @ht.set('owt', 2.2)   #collision
+    @ht.set('tow', 2.3)   #collision
+    @ht.set('five', 5)
+    @ht.get('one').must_equal 1
+    @ht.get('two').must_equal 2
+    @ht.get('owt').must_equal 2.2
+    @ht.get('tow').must_equal 2.3
+    @ht.get('five').must_equal 5
+  end
 end
