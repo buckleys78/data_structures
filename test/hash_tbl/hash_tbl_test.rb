@@ -26,4 +26,21 @@ describe HashTbl, "Testing Hash Table" do
   it "should return nil if get is called on empty hash" do
     @ht.get('one').must_equal nil
   end
+
+  it "should return nil if the hash does not contain the key" do
+    @ht.set('two', 2)
+    @ht.get('one').must_equal nil
+  end
+
+  it "allows a k,v pair added, to be 'getted' " do
+    @ht.set('one', 1)
+    @ht.set('two', 2)
+    @ht.set('three', 'tree')
+    @ht.set('four', 4)
+    @ht.set('five', 5)
+    @ht.get('one').must_equal 1
+    @ht.get('five').must_equal 5
+    @ht.get('three').must_equal 'tree'
+  end
+
 end
