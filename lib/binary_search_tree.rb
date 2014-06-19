@@ -1,16 +1,11 @@
 require 'bt_node'
-require 'pry'
+require 'queue'
 
 class BinarySearchTree
-  include Comparable
 
   def initialize
     @size = 0
     @overall_root = nil
-  end
-
-  def empty?
-    size == 0
   end
 
   def size
@@ -23,12 +18,22 @@ class BinarySearchTree
     @size += 1
   end
 
-  def contains(val)
-    subtree_contains_pre_ordered(@overall_root, val)
+  def contains(val, node = @overall_root)
+    return false unless node
+    if val == node.value
+      return true
+    elsif val < node.value
+      contains(val, node.left)
+    else  #comp > 0
+      contains(val, node.right)
+    end
   end
 
-  def depth
-    subtree_depth(@overall_root)
+  def depth(node = @overall_root)
+    return 0 unless node
+    dl = node.left ? depth(node.left) : 0
+    dr = node.right ? depth(node.right) : 0
+    return 1 + [dl, dr].max
   end
 
   def balance
@@ -38,66 +43,72 @@ class BinarySearchTree
     return lc - rc
   end
 
+  def print_breadth_first
+    return unless @overall_root
+    str = ""
+    bfq = Queue.new
+    bfq.enqueue @overall_root
+    until bfq.empty?
+      dq_node = bfq.dequeue
+      str += "#{dq_node.value} "
+      bfq.enqueue dq_node.left if dq_node.left
+      bfq.enqueue dq_node.right if dq_node.right
+    end
+    return str.chop
+  end
+
+  def print_preordered(node = @overall_root)
+    str = "#{node.value}"
+    str += " #{print_preordered(node.left)}" if node.left
+    str += " #{print_preordered(node.right)}" if node.right
+    return str
+  end
+
+  def print_postordered(node = @overall_root)
+    str = "#{print_preordered(node.right)}" if node.right
+    str += " #{print_preordered(node.left)}" if node.left
+    str += " #{node.value}"
+    return str
+  end
+
+  def print_in_ordered(node = @overall_root)
+    str = "#{print_preordered(node.left)}" if node.left
+    str += " #{node.value}"
+    str += " #{print_preordered(node.right)}" if node.right
+    return str
+  end
+
+  def load_bst_testing(a)
+    middle_index = a.length / 2
+    if a.length > 0
+      insert(a[middle_index])
+    end
+    if a.length > 1
+      l_size = middle_index
+      r_size = a.length - l_size - 1
+      left = a.slice(0, l_size)
+      right = a.slice(l_size + 1, r_size)
+      load_bst(left)
+      load_bst(right)
+    end
+  end
+
 private
   # recursive helper method(s)
   def subtree_count(node)
-    if node.nil?
-      return 0
-    else
-      sl = node.left ? subtree_count(node.left) : 0
-      sr = node.right ? subtree_count(node.right) : 0
-      return 1 + sl + sr
-    end
-  end
-
-  def subtree_depth(node)
-    if node.nil?
-      return 0
-    else
-      dl = node.left ? subtree_depth(node.left) : 0
-      dr = node.right ? subtree_depth(node.right) : 0
-      return 1 + [dl, dr].max
-    end
+    return 0 unless node
+    sl = node.left ? subtree_count(node.left) : 0
+    sr = node.right ? subtree_count(node.right) : 0
+    return 1 + sl + sr
   end
 
   def subtree_add(node, val)
-    if node.nil?
-      node = BtNode.new(val)
-    else
-      comp = val.to_s <=> node.value.to_s
-      if comp < 0
-        node.left = subtree_add(node.left, val)
-      elsif comp > 0
-        node.right = subtree_add(node.right, val)
-      end
+    return BtNode.new(val) unless node
+    if val < node.value
+      node.left = subtree_add(node.left, val)
+    elsif val > node.value
+      node.right = subtree_add(node.right, val)
     end
     return node
   end
-
-  # def subtree_contains_in_ordered(node, val)
-
-  # end
-
-  def subtree_contains_pre_ordered(node, val)
-    return false unless node
-
-    comp = val.to_s <=> node.value.to_s
-    if comp == 0
-      return true
-    elsif comp < 0
-      subtree_contains_pre_ordered(node.left, val)
-    else  #comp > 0
-      subtree_contains_pre_ordered(node.right, val)
-    end
-  end
-
-  # def subtree_contains_post_ordered(node, val)
-
-  # end
-
-  # def subtree_contains_breadth_first(node, val)
-
-  # end
-
-
 end

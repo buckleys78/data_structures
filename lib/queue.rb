@@ -32,6 +32,10 @@ class Queue
     return @first.value
   end
 
+  def empty?
+    @size == 0
+  end
+
 private
   def has_next?
     @size > 0
