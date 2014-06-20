@@ -22,3 +22,4 @@ By [Steve Buckley](steve.buckley@gerrit-tech.com).
 
 > Binary Search Tree, with methods of insert, contains, size, depth, and degree-of-balance.  It does not rebalance the tree.
 
+> Four methods to traverse a Binary Search Tree:  pre-ordered, post-ordered, in-order, and breadth-first.  Breadth-first employs the Queue data structure.
